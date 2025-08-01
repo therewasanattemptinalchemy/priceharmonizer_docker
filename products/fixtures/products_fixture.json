@@ -1,0 +1,10 @@
+[
+  {
+    "model": "products.unifiedproduct",
+    "pk": 1,
+    "fields": {
+      "name": "Sample",
+      "price": "123.45"
+    }
+  }
+]

@@ -1,0 +1,31 @@
+# Python
+*.pyc
+__pycache__/
+
+# Environment
+.env
+venv/
+env/
+
+# Django
+db.sqlite3
+*.log
+*.pot
+
+# Docker
+*.pid
+*.sock
+*.db
+/migrations/__pycache__/
+/docker-entrypoint-initdb.d/*.log
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Pipenv / poetry lock
+Pipfile.lock
+poetry.lock
