@@ -13,7 +13,7 @@ def set_default_price(sender, instance, **kwargs):
         _local.old_price = UnifiedProduct.objects.get(pk=instance.pk).price
 
 @receiver(post_save, sender=UnifiedProduct)
-def log_price_change(sender, instance, created, kwargs):
+def log_price_change(sender, instance, created, **kwargs):
     if not created and hasattr(_local, 'old_price'):
         PriceUpdateLog.objects.create(
             product=instance,
