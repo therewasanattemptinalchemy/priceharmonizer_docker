@@ -1,10 +1,11 @@
-name: Django CI❤️❤️❤️
+name: Django CI ❤️❤️❤️
 
 on: [push, pull_request]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     services:
       postgres:
         image: postgres
@@ -15,11 +16,28 @@ jobs:
         ports:
           - 5432:5432
 
+    env:
+      POSTGRES_DB: your_database_name
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      DB_HOST: localhost
+      DB_PORT: 5432
+
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-python@v2
         with:
           python-version: '3.10'
-      - run: pip install -r requirements.txt
-      - run: python manage.py migrate
-      - run: python manage.py test
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Make migrations
+        run: python manage.py makemigrations --noinput
+
+      - name: Apply migrations
+        run: python manage.py migrate --noinput
+
+      - name: Run tests
+        run: python manage.py test
